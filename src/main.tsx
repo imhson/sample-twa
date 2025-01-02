@@ -6,7 +6,7 @@ import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <TonConnectUIProvider manifestUrl='https://d96c-118-70-9-25.ngrok-free.app/tonconnect-manifest.json'>
+    <TonConnectUIProvider manifestUrl='https://sample-twa-99b45.web.app/tonconnect-manifest.json'>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<App />} />
