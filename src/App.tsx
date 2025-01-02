@@ -23,7 +23,7 @@ function App() {
   }, [])
   return (
     <main className='text-green-500 p-4 w-screen space-y-2'>
-      {userData && <pre className=''>{JSON.stringify(userData, null, 2)}</pre>}
+      {userData ? <pre className=''>{JSON.stringify(userData, null, 2)}</pre> : <div>Hello world!</div>}
       <div className='break-all'>{address}</div>
       <div className='flex justify-end gap-2'>
         {address && (
