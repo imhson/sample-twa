@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { User } from './models/User'
 import WebApp from '@twa-dev/sdk'
 import { SendTransactionRequest, TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react'
 import { useTonAddress } from '@tonconnect/ui-react'
@@ -13,18 +12,19 @@ const transaction: SendTransactionRequest = {
   ],
 }
 function App() {
-  const [userData, setUserData] = useState<User | null>(null)
+  const [userDataUnsafe, setUserDataUnsafe] = useState<unknown | null>(null)
   const [tonConnectUI] = useTonConnectUI()
   const address = useTonAddress()
   useEffect(() => {
-    if (WebApp.initDataUnsafe.user) {
-      setUserData(WebApp.initDataUnsafe.user)
+    if (WebApp.initDataUnsafe) {
+      console.log(WebApp.initDataUnsafe)
+      setUserDataUnsafe(WebApp.initDataUnsafe)
     }
   }, [])
   return (
     <main className='p-4 w-screen text-white bg-black min-h-screen space-y-2'>
       <h1>Sample TWA</h1>
-      {userData ? <pre className=''>{JSON.stringify(userData, null, 2)}</pre> : <div>Hello world!</div>}
+      {userDataUnsafe ? <pre className=''>{JSON.stringify(userDataUnsafe, null, 2)}</pre> : <div>Hello world!</div>}
       <div className='break-all'>{address}</div>
       <div className='flex justify-end gap-2'>
         {address && (
